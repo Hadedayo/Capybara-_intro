@@ -18,6 +18,18 @@ class Registration
   ADDRESS = 'input[placeholder="1234 Main St"]'
   ADDRESS_NO_TWO = 'input[placeholder="Apartment, studio, or floor"]'
   CITY_FIELD = 'inputCity'
+  COUNTY_FIELD = 'inputCounty'
+  POSTCODE_FIELD = 'inputPostcode'
+  EMAIL_ADDRESS_FIELD = 'inputemailaddress'
+  SKILLS_FIELD = 'exampleFormControlTextarea1'
+  PHONE_NUMBER_FIELD = 'exampleFormControlInput1'
+  LINKEDIN_URL = 'input[type="url"]'
+  CV_FIELD = 'input[type="file"]'
+  DEVOPS_FIELD_LABEL = 'label[for="streamRadioInline2"]'
+  DEVOPS_FIELD_ID = '#streamRadioInline2'
+  TERMS_CONDITIONS_FIELD = '#terms'
+  RATE_EXPERIENCE_SLIDER_ID = '#value_for_slider'
+  SUBMIT_ID = 'button[type="submit"]'
 
   def visit_home_page
     visit(HOMEPAGE_URL)
@@ -103,12 +115,92 @@ class Registration
     find(ADDRESS_NO_TWO).value
   end
 
-  def fill_in_city
-    find(CITY_FIELD).send_keys('London')
+  def fill_in_city_field
+    fill_in(CITY_FIELD, :with => 'London')
   end
 
   def check_city_field
-    find(CITY_FIELD).value
+    find_field(CITY_FIELD).value
+  end
+
+  def select_county
+    select('Bristol', :from => COUNTY_FIELD)
+  end
+
+  def is_county_field_selected
+    find_field(COUNTY_FIELD).value
+  end
+
+  def fill_in_postcode_field
+    fill_in(POSTCODE_FIELD, :with => 'SE12 34L')
+  end
+
+  def check_postcode_field
+    find_field(POSTCODE_FIELD).value
+  end
+
+  def fill_in_email_address_field
+    fill_in(EMAIL_ADDRESS_FIELD, :with => 'h@hotmail.com')
+  end
+
+  def check_email_address_field
+    find_field(EMAIL_ADDRESS_FIELD).value
+  end
+
+  def fill_in_skills_field
+    fill_in(SKILLS_FIELD, :with => 'Lorem ipsum')
+  end
+
+  def check_skills_field
+    find_field(SKILLS_FIELD).value
+  end
+
+  def fill_in_phone_number_field
+    fill_in(PHONE_NUMBER_FIELD, :with => '0800 347 5672')
+  end
+
+  def check_phone_number_field
+    find_field(PHONE_NUMBER_FIELD).value
+  end
+
+  def fill_in_linkedIn_field
+    find(LINKEDIN_URL).send_keys('https://abc.url')
+  end
+
+  def check_linkedIn_field
+    find(LINKEDIN_URL).value
+  end
+
+  def upload_file
+    find(CV_FIELD).send_keys('C:\Users\Tech-W103\Desktop')
+  end
+
+  def get_file
+    find(CV_FIELD).value
+  end
+
+  def select_devops_field
+    find(DEVOPS_FIELD_LABEL).click
+  end
+
+  def is_devops_selected
+    find(DEVOPS_FIELD_ID).selected?
+  end
+
+  def input_terms_conditions
+    find(TERMS_CONDITIONS_FIELD).click
+  end
+
+  def is_input_terms_conditions_selected
+    find(TERMS_CONDITIONS_FIELD).selected?
+  end
+
+  def get_rating_experience
+    find(RATE_EXPERIENCE_SLIDER_ID).text.to_i
+  end
+
+  def sign_in
+    find(SUBMIT_ID).click
   end
 
 end
