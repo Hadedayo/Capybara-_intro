@@ -62,19 +62,3 @@ class Registration
   end
 
 end
-
-test = Registration.new
-test.visit_home_page
-sleep 2
-test.fill_in_first_name_field
-sleep 2
-puts test.check_first_name_field
-test.fill_in_last_name_field
-sleep 2
-puts test.check_last_name_field
-test.fill_in_age_field
-puts test.check_age_field
-test.fill_in_dob
-puts test.check_dob_field
-test.check_female_field
-sleep 2
